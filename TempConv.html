@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+   
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+
+    <script language="JavaScript" type="text/javascript">
+
+    function swapTempUnits() {
+        var swap1 = document.MainForm.from.selectedIndex;
+        var swap2 = document.MainForm.to.selectedIndex;
+   
+        document.MainForm.from.selectedIndex=swap2;
+        document.MainForm.to.selectedIndex=swap1;
+   
+        myCon();
+   }
+   
+   function myCon() {
+     var FromVal, ToVal, FromName, ToName, v1;
+   
+     v1 = document.MainForm.what.value;
+     v1 = stripBad(v1);
+     v1 = parseFloat(v1);
+     if (isNaN(v1)) v1 = 0;
+     document.MainForm.what.value = v1;
+     
+     FromVal = document.MainForm.from[document.MainForm.from.selectedIndex].value;
+     ToVal = document.MainForm.to[document.MainForm.to.selectedIndex].value;
+     FromName = document.MainForm.from.options[document.MainForm.from.selectedIndex].text;
+     ToName = document.MainForm.to.options[document.MainForm.to.selectedIndex].text;
+   
+     var ConvertedTemp = get_fact(v1, FromVal, ToVal);
+     if (ConvertedTemp == "Below Absolute Zero"){
+       document.MainForm.answer.value = "Your input cannot be below absolute zero.";
+     } else {
+       document.MainForm.answer.value = v1 + " " + FromName + " = " + ConvertedTemp + " " + ToName;
+     }
+   }
+   
+   function resetanswer() {
+     document.MainForm.answer.value = "";
+   }
+   
+   function get_fact(ff,from_val,to_val){
+    // first convert to kelvin
+    if (from_val == 0){
+      ff = ff + 273.15;
+    } else if (from_val == 1){
+      ff = ((ff - 32)/ 1.8) + 273.15;
+    } else if (from_val == 2){
+      ff = ff / 1.8;
+    } else if (from_val == 3){
+      ff = (ff * 1.25) + 273.15;
+    }
+   
+    if (ff < 0){
+      // Below absolute zero
+      return "Below Absolute Zero";
+    }
+   
+    // now convert kelvin to unit
+    if (to_val == 0){
+      ff = ff - 273.15;
+    } else if (to_val == 1){
+      ff = (1.8 * (ff -273.15)) + 32;
+    } else if (to_val == 2){
+      ff = ff * 1.8;
+    } else if (to_val == 3){
+      ff = (ff - 273.15) / 1.25;
+    }
+    
+    // round it off
+    if (Number.prototype.toFixed) {
+      ff = ff.toFixed(7);
+      ff = parseFloat(ff);
+    }
+    else {
+      var leftSide = Math.floor(ff);
+      var rightSide = ff - leftSide;
+      ff = leftSide + Math.round(rightSide *10000000)/10000000;
+    }
+   
+   return ff;
+   }
+   
+   function stripBad(string) {
+       for (var i=0, output='', valid="eE-0123456789."; i<string.length; i++)
+          if (valid.indexOf(string.charAt(i)) != -1)
+             output += string.charAt(i)
+       return output;
+   } 
+
+</script>
+
+</head>
+
+<body>
+    <h1>Temperature Converter</h1>
+</div>  <!-- End of MainMenu -->
+<div class="main_content">    <!-- Start of Main Content -->
+     <div class="content_left">  <!-- Start of Left Content -->
+          <div class="content_heading">
+               <h2>Temperature Converter!</h2>
+
+<p class="red">Temperature Conversion</p>
+
+
+
+          </div>
+
+    <p>&nbsp;</p>
+    <form name="mainform">
+        <div>
+
+            <table>
+                <tr>
+                    <td colspan="2">Degree
+                    <input type="text" name="what" size="15" onFocus="javascript:resetanswer();">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>From:
+                        <br>
+                        <select name="from" onchange="javascript:myCon();">
+                        
+                            <option value="0" selected>degree</option>
+                            <option value="1">Celcius</option>
+                            <option value="2">Fahrenheit</option>
+                            <option value="3">Kelvin</option>
+                        </select>
+                    </td>
+
+                    <td>
+                        To:<br>
+                        <select name="to" onchange="javascript:myCon();">
+                        
+                            <option value="0" selected>degree</option>
+                            <option value="1">Celcius</option>
+                            <option value="2">Fahrenheit</option>
+                            <option value="3">Kelvin</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p>
+                            <a href="javascript:swapTempUnits();"></a>
+                        </p>
+                        <input type="button" value="&nbsp;&rArr;&nbsp; Convert &nbsp;&lArr;&nbsp;" name="Go" onClick="javascript:myCon();">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><input type="text" name="answer" size="60"></td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </form>
+    <p>&nbsp;</p>
+    
+</body>
+
+</html>
