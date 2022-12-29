@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        a{
+            text-decoration: none;
+        }
+        .hero{
+            min-width: 100%;
+            min-height: 100vh;
+            background: url(https://venngage-wordpress.s3.amazonaws.com/uploads/2018/09/Simple-Minimalist-Background-Image.jpg);
+            background-size: cover;
+            display: block;
+            margin: auto;
+        }
+
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 30px 100px;
+        }
+        .logo{
+            max-height: 60px;
+        }
+        nav ul li{
+            list-style: none;
+            display: inline-block;
+            padding: 10px 20px;
+        }
+        nav ul li a{
+            color: bisque;
+            position: relative;
+            padding: 5px 0px;
+        }
+        nav ul li a:hover {
+            color: maroon;
+        }
+        nav ul li a:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: maroon;
+            transition: 0.3s;
+            bottom: 0;
+   
+        }
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        .button {
+            color: bisque;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 40px;
+            border-radius: 500px;
+            display: inline-block;
+            font-weight: 500;
+            transition: all 0.4s ease-in-out;
+            background-size: 152% 100%;
+            background: brown;
+            border: 2px solid gray;
+        }
+       .button:hover {
+            background: transparent;
+            border-color: rgb(234, 219, 219);
+            color: rgb(203, 183, 183);
+        }
+        .content {
+            position: absolute;
+            top: 35%;
+            left: 8%;
+        }
+        .content .title {
+            color: black;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                120deg,
+                red 20.69%, 
+                maroon 50.19%,
+                black 79.69%
+                );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .content h1 {
+            color: bisque;
+            font-size: 75px;
+            font-weight: 900;
+            line-height: 90px;
+            text-transform: inherit;
+            width: 70%;
+        }
+        .content h1 span {
+            color: brown;
+        }
+        .content p {
+            width: 55%;
+            color: black;
+            margin-top: 25px;
+            margin-bottom: 30px;
+        }
+        .about { 
+            min-width: 100%;
+            min-height: 100vh;
+            background: url(/portfolio1.png);
+            background-size: cover;
+            position: relative;
+            top: 35%;
+            left: 0;
+            display: block;
+            margin: auto;
+            font-family: sans-serif ;
+        }
+        .about .title2 {
+            color: black;
+            font-size: 55px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                120deg,
+                violet 20.69%, 
+                indigo 50.19%,
+                black 79.69%
+                );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .about b {
+            color: darkmagenta;
+            font-size: 75px;
+            font-weight: 900;
+            line-height: 90px;
+            text-transform: inherit;
+            width: 70%;
+        }
+        .experiences {
+            min-width: 100%;
+            min-height: 100vh;
+            background: url(/portfolio6.jpg);
+            background-size: cover;
+            position: relative;
+            top: 35%;
+            left: 0;
+            display: block;
+            margin: auto;
+            font-family: sans-serif ;
+        }
+        .experiences .title3 {
+            color: black;
+            font-size: 55px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                120deg,
+                black 20.69%, 
+                black 50.19%,
+                black 79.69%
+                );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .experiences .explist {
+            color: rgb(87, 9, 9);
+            font-size: 45px;
+            font-weight: 450;
+            line-height: 45px;
+            text-transform: inherit;
+            width: 70%;
+        }
+        .experiences .explist1 {
+            color: bisque;
+            font-size: 20px;
+            font-weight: 450;
+            line-height: 45px;
+            text-transform: inherit;
+            width: 70%;
+        }
+        .experiences .explist2 {
+            color: bisque;
+            font-size: 20px;
+            font-weight: 450;
+            line-height: 45px;
+            text-transform: inherit;
+            width: 70%;
+        }
+        .projects {
+            min-width: 100%;
+            min-height: 100vh;
+            background: url(/portfolio5.png);
+            background-size: cover;
+            position: relative;
+            top: 35%;
+            left: 0;
+            display: block;
+            margin: auto;
+            font-family: sans-serif ;
+        }
+        .projects .title4 {
+            color: black;
+            font-size: 55px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                120deg,
+                rgb(195, 72, 72) 20.69%, 
+                rgb(113, 12, 12) 50.19%,
+                rgb(73, 2, 2) 79.69%
+                );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .projects .explist3 {
+            color: rgb(246, 245, 247);
+            font-size: 32px;
+            font-weight: 450;
+            line-height: 45px;
+            text-transform: inherit;
+            width: 70%;
+        }
+        .contact {
+            min-width: 100%;
+            min-height: 100vh;
+            background: url(https://rukminim1.flixcart.com/image/416/416/kvmpq4w0/wall-decoration/w/z/m/grey-background-map-continents-wallpaper-poster-1-v061121-090-original-imag8hg48fj9htgx.jpeg?q=70);
+            background-size: cover;
+            position: relative;
+            top: 35%;
+            left: 0;
+            display: block;
+            margin: auto;
+            font-family: sans-serif ;
+        }
+        .contact .title5 {
+            color: black;
+            font-size: 55px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+            background: linear-gradient(
+                120deg,
+                rgb(195, 72, 72) 20.69%, 
+                rgb(113, 12, 12) 50.19%,
+                rgb(73, 2, 2) 79.69%
+                );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .contact form {
+            font-size: medium;
+            font-family: 'Times New Roman', Times, sans-serif;
+            color: bisque;
+            font-weight: 600;
+        }
+        .contact pre {
+            font-size: medium;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            color: antiquewhite;
+        }
+
+        
+    </style>
+
+</head>
+
+<body>
+    <div class="hero">
+        <nav>
+            <img src="/WhatsApp Image 2022-12-28 at 21.03.00.jpeg" alt="Me" width="130">
+            <br><br>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Experiences</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+
+            <a href="#" class="button">Resume</a>
+        </nav>
+        <br><br>
+
+        <div class="content">
+            <span class="title">Web Developer & Designer</span>
+            <h1>Hey! I'm <span>Aditi</span></h1>
+
+            <p>
+                Web development and designing intern in OASIS INFOBYTE.
+            </p>
+
+            <a href="#" class="button">Download Resume</a>
+
+        </div>
+    </div>
+
+    <hr>
+    <div class="about" align="center">
+        <span class="title2">ABOUT</span>
+        <pre>
+            <b>Introduction</b>
+
+
+
+
+            Hello! I'm <h3>Aditi Kumari</h3> a self taught web developer
+            & designer,having specialisation in Front-end 
+            web development from India. I design beautiful and
+            easy to use online experiences.
+
+        </pre>
+
+        <a href="#" class="button">More</a>
+        
+    </div>
+
+    <div class="experiences" align="center">
+        <span class="title3">EXPERIENCES</span>
+        <ul>
+            <li class="explist">Web development and design intern at Oasis Infobyte</li>
+            <ul class="explist1">
+                <li>HTML: Basic and advanced</li>
+                <li>CSS: Designing beautiful stylesheet</li>
+                <li>JS: Using javascript for making website responsive</li>
+                <li>Bootstrapping</li>
+            </ul>
+            <li class="explist">ALP volunteer at NSS IITB</li>
+            <ul class="explist2">
+                <li>Ms-Excel: Taught basics of Ms-Excel as a volunteer through ALP</li>
+                <li>Communication skills: Taught basics for better communication skills</li>
+                <li>Spoken English: Taught basic English for better communication</li>
+            </ul>
+
+        </ul>
+    </div>
+
+    <div class="projects" align="center">
+        <span class="title4">PROJECTS</span>
+        <ul class="explist3">
+            <li>VPN Landing Page Clone</li>
+            <a href="#" class="button">VPN Clone</a>
+            <li>Personal Portfolio</li>
+            <a href="#" class="button">Aditi's Portfolio</a>
+            <li>Temperature Converter</li>
+            <a href="#" class="button">Temp. Converter</a>
+        
+
+        </ul>
+    </div>
+
+    <footer>
+        <div class="contact" align="center">
+        <span class="title5">CONTACT</span>
+        <form class="form1">
+            Enter your Name: <input type="text" placeholder="Name">
+            <br><br>
+            Email Id: <input type="email" placeholder="xyz@gmail.com">
+            <br><br>
+            Contact Number: <input type="number" placeholder="Mobile No.">
+            <br><br>
+            Address: <input type="text" placeholder="Current address">
+            <br><br><br>
+            <input type="submit">
+
+        </form>
+        <br><br>
+        <a href="#" class="button">For enquiry</a>
+        <br>
+        
+        <br>
+        <pre>Aditi Kumari,
+123 Flat, XYZ Lane,
+Imaginary City, 
+223344
+<br>
+<b>For Queries:</b>
+1234567890,0987654321
+xyz@outlook.com,zxv@yahoo.com
+
+        </pre>
+
+        </div>
+    </footer>
+</body>
+</html>
